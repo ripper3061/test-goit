@@ -14,6 +14,7 @@ import { ReactComponent as Ellipse } from "../../images/Ellipse.svg";
 import bgImg from "../../images/pictureBg.png";
 
 import { useState } from "react";
+import { updateTweet } from "../../utils/api";
 
 export const Card = ({
   user,
@@ -21,10 +22,10 @@ export const Card = ({
   tweets,
   changeFollowersAmount,
   id,
-  following,
   avatar,
+  isFollowing,
 }) => {
-  const [isFollow, setIsFollow] = useState(following || false);
+  const [isFollow, setIsFollow] = useState(isFollowing || false);
   const [followersAmount, setFollowersAmount] = useState(followers ?? 0);
 
   const countedFollowersAmount = new Intl.NumberFormat("en-US").format(
@@ -37,12 +38,17 @@ export const Card = ({
       setFollowersAmount(newAmount);
       changeFollowersAmount(newAmount, id, false);
       setIsFollow(false);
+
+      updateTweet(id, { followers: newAmount, isFollowing: false });
+
       return;
     }
     const newAmount = followersAmount + 1;
     setFollowersAmount(newAmount);
     changeFollowersAmount(newAmount, id, true);
     setIsFollow(true);
+
+    updateTweet(id, { followers: newAmount, isFollowing: true });
   };
 
   return (

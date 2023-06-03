@@ -11,3 +11,8 @@ export const fetchTweetsApi = async (page = 1) => {
   });
   return response.data;
 };
+
+export const updateTweet = async (id, data) => {
+  const response = await axios.put(`/tweetsApp/${id}`, data);
+  return response.data;
+};

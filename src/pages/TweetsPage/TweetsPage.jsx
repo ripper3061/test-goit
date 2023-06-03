@@ -10,9 +10,9 @@ import { Container } from "./TweetsPage.styled";
 export default function TweetsPage() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isEnd, setIsEnd] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
-  console.log(tweets);
 
   useEffect(() => {
     const fetchTweets = async () => {
@@ -20,8 +20,13 @@ export default function TweetsPage() {
 
       try {
         const fetchedTweets = await fetchTweetsApi(page);
+
         if (fetchedTweets === []) return;
-        setTweets((prevImages) => [...prevImages, ...fetchedTweets]);
+        setTweets((prevTweets) => {
+          if (fetchedTweets.length !== 3) setIsEnd(true);
+
+          return [...prevTweets, ...fetchedTweets];
+        });
 
         if (fetchedTweets === 0) {
           setError("Sorry, there are no tweets.");
@@ -40,7 +45,7 @@ export default function TweetsPage() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const shownLoadMoreBtn = !loading && tweets.length !== 0;
+  const shownLoadMoreBtn = !loading && tweets.length !== 0 && !isEnd;
 
   const location = useLocation();
   const backToLinkHref = location.state?.from ?? "/";
