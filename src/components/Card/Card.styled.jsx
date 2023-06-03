@@ -112,6 +112,6 @@ export const Button = styled.button`
     scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   :hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    scale: 1.05;
+    scale: 1.01;
   }
 `;
