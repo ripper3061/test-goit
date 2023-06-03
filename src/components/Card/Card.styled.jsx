@@ -95,7 +95,6 @@ export const Button = styled.button`
   border: 1px solid;
   border-radius: 10px;
   background-color: ${(props) => {
-    console.log(props);
     if (props.isFollow) {
       return "#5CD3A8";
     } else {
