@@ -16,15 +16,7 @@ import bgImg from "../../images/pictureBg.png";
 import { useState } from "react";
 import { updateTweet } from "../../utils/api";
 
-export const Card = ({
-  user,
-  followers,
-  tweets,
-  changeFollowersAmount,
-  id,
-  avatar,
-  isFollowing,
-}) => {
+export const Card = ({ user, followers, tweets, id, avatar, isFollowing }) => {
   const [isFollow, setIsFollow] = useState(isFollowing || false);
   const [followersAmount, setFollowersAmount] = useState(followers ?? 0);
 
@@ -36,7 +28,6 @@ export const Card = ({
     if (isFollow) {
       const newAmount = followersAmount - 1;
       setFollowersAmount(newAmount);
-      changeFollowersAmount(newAmount, id, false);
       setIsFollow(false);
 
       updateTweet(id, { followers: newAmount, isFollowing: false });
@@ -45,7 +36,6 @@ export const Card = ({
     }
     const newAmount = followersAmount + 1;
     setFollowersAmount(newAmount);
-    changeFollowersAmount(newAmount, id, true);
     setIsFollow(true);
 
     updateTweet(id, { followers: newAmount, isFollowing: true });
