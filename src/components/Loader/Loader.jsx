@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import ClipLoader from "react-spinners/ClipLoader";
+import PropTypes from 'prop-types';
+import ClipLoader from 'react-spinners/ClipLoader';
 
-export const Loader = ({ isLoading }) => {
+export const Loader = ({ loading }) => {
   return (
     <ClipLoader
-      color="orange"
-      loading={isLoading}
+      color="blue"
+      loading={loading}
       size={150}
       aria-label="Loading Spinner"
       data-testid="loader"
-      cssOverride={{ margin: "auto", marginLeft: "40px" }}
+      cssOverride={{ margin: 'auto' }}
     />
   );
 };
 
 Loader.propTypes = {
-  isLoading: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 };

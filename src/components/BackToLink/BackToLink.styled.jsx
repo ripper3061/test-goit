@@ -14,6 +14,6 @@ export const StyledLink = styled(Link)`
   transition: color 250ms linear;
 
   :hover {
-    color: blue;
+    color: #5736a3;
   }
 `;

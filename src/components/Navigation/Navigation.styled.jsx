@@ -21,9 +21,11 @@ export const Link = styled(NavLink)`
   width: 100px;
   padding: 8px 16px;
   border-radius: 4px;
+  border: 1px solid;
+  border-radius: 10px;
   text-decoration: none;
   background-color: #dedede;
-  color: #2c2c2c;
+  color: rgb(55, 55, 55);
   font-weight: 500;
   text-align: center;
   border-radius: 4px;
@@ -37,7 +39,6 @@ export const Link = styled(NavLink)`
   }
 
   &.active {
-    color: white;
-    background-color: #02c0ff;
+    background-color: #ebd8ff;
   }
 `;

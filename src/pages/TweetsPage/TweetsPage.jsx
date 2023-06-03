@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { CardList } from "../components/CardList/CardList";
-import { Loader } from "../components/Loader/Loader";
-import { fetchTweetsApi } from "../utils/api";
-import { Button } from "../components/Button/Button";
-import { BackToLink } from "../components/BackToLink/BackToLink";
+import { CardList } from "../../components/CardList/CardList";
+import { Loader } from "../../components/Loader/Loader";
+import { fetchTweetsApi } from "../../utils/api";
+import { Button } from "../../components/Button/Button";
+import { BackToLink } from "../../components/BackToLink/BackToLink";
 import { useLocation } from "react-router-dom";
+import { Container } from "./TweetsPage.styled";
 
 export default function TweetsPage() {
   const [tweets, setTweets] = useState([]);
@@ -45,12 +46,12 @@ export default function TweetsPage() {
   const backToLinkHref = location.state?.from ?? "/";
 
   return (
-    <div>
+    <Container>
       <BackToLink to={backToLinkHref}>Go back</BackToLink>
-      {loading && <Loader loading={loading} />}
       {error && tweets.length === 0 && <p>{error}</p>}
       <CardList data={tweets} />
+      {loading && <Loader loading={loading} />}
       {shownLoadMoreBtn && <Button onClick={handleClickOnLoadBtn} />}
-    </div>
+    </Container>
   );
 }
