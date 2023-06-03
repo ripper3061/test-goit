@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// space: [0, 2, 4, 8, 16, 20, 26, 28, 36],
+
 export const Container = styled.div`
   position: relative;
   display: flex;
@@ -18,6 +18,7 @@ export const Container = styled.div`
   padding-bottom: 36px;
   padding-left: 36px;
   padding-right: 36px;
+  height: 396px;
 `;
 
 export const LogoBox = styled.div`

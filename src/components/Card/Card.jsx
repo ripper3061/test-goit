@@ -12,7 +12,6 @@ import {
 import { ReactComponent as Logo } from "../../images/Logo.svg";
 import { ReactComponent as Ellipse } from "../../images/Ellipse.svg";
 import bgImg from "../../images/pictureBg.png";
-
 import { useState } from "react";
 import { updateTweet } from "../../utils/api";
 
