@@ -25,8 +25,8 @@ export const Card = ({
   avatar,
 }) => {
   const [isFollow, setIsFollow] = useState(following || false);
-
   const [followersAmount, setFollowersAmount] = useState(followers ?? 0);
+
   const countedFollowersAmount = new Intl.NumberFormat("en-US").format(
     followersAmount
   );
@@ -45,8 +45,6 @@ export const Card = ({
     setIsFollow(true);
   };
 
-  const imgSrc = `https://cdn-icons-png.flaticon.com/512/${avatar}`;
-
   return (
     <Container>
       <LogoBox>
@@ -55,7 +53,7 @@ export const Card = ({
       <BgImg src={bgImg} alt="background" />
       <AvatarBox>
         <Ellipse />
-        <Avatar src={imgSrc} alt={user} />
+        <Avatar src={`${avatar}`} alt={user} />
       </AvatarBox>
       <Line />
       <TweetsText>{tweets} tweets</TweetsText>

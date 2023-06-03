@@ -1,4 +1,4 @@
-const STORAGE_USERS_DATA = "users";
+const STORAGE_USERS_DATA = "user";
 
 export const getDataFromLocalStorage = () => {
   try {

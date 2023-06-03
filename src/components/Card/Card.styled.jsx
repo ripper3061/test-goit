@@ -42,10 +42,11 @@ export const AvatarBox = styled.div`
 
 export const Avatar = styled.img`
   position: absolute;
-  top: 14px;
-  right: 14px;
+  border-radius: 50%;
+  top: 8px;
+  right: 8px;
   z-index: -1;
-  width: 50px;
+  width: 64px;
 `;
 
 export const Line = styled.div`
@@ -72,6 +73,7 @@ export const TweetsText = styled.p`
   font-weight: 500;
   color: #ebd8ff;
   text-transform: uppercase;
+  margin: 0;
   margin-bottom: 16px;
 `;
 
@@ -80,6 +82,7 @@ export const FollowersText = styled.p`
   font-weight: 500;
   color: #ebd8ff;
   text-transform: uppercase;
+  margin: 0;
   margin-bottom: 26px;
 `;
 

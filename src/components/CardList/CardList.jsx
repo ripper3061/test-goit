@@ -1,33 +1,27 @@
 import { useState } from "react";
-import {
-  getDataFromLocalStorage,
-  setDataToLocalStorage,
-} from "../../utils/getSetDataLocalStorage";
+// import {
+//   getDataFromLocalStorage,
+//   setDataToLocalStorage,
+// } from "../../utils/getSetDataLocalStorage";
 import { Container } from "./CardList.styled";
-import { useEffect } from "react";
-import usersDb from "../../utils/db.json";
+// import { useEffect } from "react";
 import { Card } from "../Card/Card.jsx";
 
-export const CardList = () => {
-  const [users, setUsers] = useState(
-    () => getDataFromLocalStorage() ?? usersDb
-  );
-  useEffect(() => {
-    setDataToLocalStorage(users);
-  }, [users]);
+export const CardList = ({ data }) => {
+  const [tweets, settweets] = useState(data);
 
   const changeFollowersAmount = (value, id, following) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === id ? { ...user, followers: value, following } : user
+    settweets((prevTweets) =>
+      prevTweets.map((tweet) =>
+        tweet.id === id ? { ...tweet, followers: value, following } : tweet
       )
     );
-    setDataToLocalStorage(users);
   };
+
   return (
     <Container>
-      {users &&
-        users.map(({ id, avatar, user, followers, tweets, following }) => (
+      {data &&
+        data.map(({ id, avatar, user, followers, tweets, following }) => (
           <Card
             key={id}
             avatar={avatar}
