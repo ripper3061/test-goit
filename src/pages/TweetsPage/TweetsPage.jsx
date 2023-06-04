@@ -53,10 +53,9 @@ export default function TweetsPage() {
     setPage(1);
   };
 
-  const shownLoadMoreBtn = !loading && tweets.length !== 0 && !isEnd;
-
   const location = useLocation();
   const backToLinkHref = location.state?.from ?? "/";
+  const shownLoadMoreBtn = !loading && tweets.length !== 0 && !isEnd;
 
   return (
     <Container>
