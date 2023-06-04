@@ -5,11 +5,13 @@ import { fetchTweetsApi } from "../../utils/api";
 import { Button } from "../../components/Button/Button";
 import { BackToLink } from "../../components/BackToLink/BackToLink";
 import { useLocation } from "react-router-dom";
-import { Container } from "./TweetsPage.styled";
+import { Container, ButtonLayout } from "./TweetsPage.styled";
+import { Dropdown } from "../../components/Dropdown/Dropdown";
 
 export default function TweetsPage() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState(null);
   const [isEnd, setIsEnd] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
@@ -19,7 +21,7 @@ export default function TweetsPage() {
       setLoading(true);
 
       try {
-        const fetchedTweets = await fetchTweetsApi(page);
+        const fetchedTweets = await fetchTweetsApi(page, value);
 
         if (fetchedTweets === []) return;
         setTweets((prevTweets) => {
@@ -39,11 +41,17 @@ export default function TweetsPage() {
     };
 
     fetchTweets();
-  }, [page]);
+  }, [page, value]);
 
   const handleClickOnLoadBtn = () => {
     setPage((prevPage) => prevPage + 1);
   };
+
+  const handleClickOnDropdown = (value) => {
+    setValue(value);
+  };
+
+  console.log(value);
 
   const shownLoadMoreBtn = !loading && tweets.length !== 0 && !isEnd;
 
@@ -52,7 +60,11 @@ export default function TweetsPage() {
 
   return (
     <Container>
-      <BackToLink to={backToLinkHref}>Go back</BackToLink>
+      <ButtonLayout>
+        <BackToLink to={backToLinkHref}>Go back</BackToLink>
+        <Dropdown data={tweets} handleClickOnDropdown={handleClickOnDropdown} />
+      </ButtonLayout>
+
       {error && tweets.length === 0 && <p>{error}</p>}
       <CardList data={tweets} />
       {loading && <Loader loading={loading} />}

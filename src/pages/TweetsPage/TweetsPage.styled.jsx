@@ -7,3 +7,10 @@ export const Container = styled.div`
   font-size: 20px;
   font-weight: 700;
 `;
+
+export const ButtonLayout = styled.div`
+  display: flex;
+
+  gap: 4px;
+  margin-bottom: 15px;
+`;
