@@ -25,7 +25,7 @@ export default function TweetsPage() {
         setTweets((prevTweets) => {
           if (fetchedTweets.length !== 3) setIsEnd(true);
 
-          return [...prevTweets, ...fetchedTweets];
+          return page === 1 ? fetchedTweets : [...prevTweets, ...fetchedTweets];
         });
 
         if (fetchedTweets === 0) {
