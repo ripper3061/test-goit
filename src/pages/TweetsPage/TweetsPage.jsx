@@ -26,6 +26,7 @@ export default function TweetsPage() {
         if (fetchedTweets === []) return;
         setTweets((prevTweets) => {
           if (fetchedTweets.length !== 3) setIsEnd(true);
+          if (fetchedTweets.length >= 3) setIsEnd(false);
 
           return page === 1 ? fetchedTweets : [...prevTweets, ...fetchedTweets];
         });
@@ -49,9 +50,8 @@ export default function TweetsPage() {
 
   const handleClickOnDropdown = (value) => {
     setValue(value);
+    setPage(1);
   };
-
-  console.log(value);
 
   const shownLoadMoreBtn = !loading && tweets.length !== 0 && !isEnd;
 
