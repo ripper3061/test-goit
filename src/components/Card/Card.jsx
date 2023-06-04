@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PropTypes from 'prop-types';
 import {
   Avatar,
   BgImg,
@@ -12,7 +14,6 @@ import {
 import { ReactComponent as Logo } from "../../images/Logo.svg";
 import { ReactComponent as Ellipse } from "../../images/Ellipse.svg";
 import bgImg from "../../images/pictureBg.png";
-import { useState } from "react";
 import { updateTweet } from "../../utils/api";
 
 export const Card = ({ user, followers, tweets, id, avatar, isFollowing }) => {
@@ -58,4 +59,13 @@ export const Card = ({ user, followers, tweets, id, avatar, isFollowing }) => {
       </Button>
     </Container>
   );
+};
+
+Button.propTypes = {
+  user: PropTypes.string,
+  followers: PropTypes.number,
+  tweets: PropTypes.number,
+  id: PropTypes.string,
+  avatar: PropTypes.string,
+  isFollowing: PropTypes.bool,
 };

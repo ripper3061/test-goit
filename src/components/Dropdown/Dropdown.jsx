@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import {
   DropdownContainer,
   DropdownButton,
@@ -28,4 +29,9 @@ export const Dropdown = ({ handleClickOnDropdown }) => {
       </DropdownContent>
     </DropdownContainer>
   );
+};
+
+
+Dropdown.propTypes = {
+  onClick: PropTypes.func,
 };

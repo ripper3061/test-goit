@@ -1,7 +1,5 @@
-// import { useState } from "react";
-
+import PropTypes from 'prop-types';
 import { Container } from "./CardList.styled";
-
 import { Card } from "../Card/Card.jsx";
 
 export const CardList = ({ data }) => {
@@ -21,4 +19,18 @@ export const CardList = ({ data }) => {
         ))}
     </Container>
   );
+};
+
+CardList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      createdAt: PropTypes.string.isRequired,
+      user: PropTypes.string.isRequired,
+      tweets: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      followers: PropTypes.number.isRequired,
+      isFollowing: PropTypes.bool.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
